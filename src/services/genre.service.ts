@@ -9,9 +9,9 @@ class GenreService {
         return axiosService.get(urls.toGenres);
     }
 
-    // Method for get all movies of our genre
-    getMoviesByGenre(choseGenreId: number): IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.toMovies, {params: {with_genres: choseGenreId}});
+    // Method for get page movies of our genre
+    getMoviesByGenre(choseGenreId: number, page: number = 1): IRes<IPagination<IMovie[]>> {
+        return axiosService.get(urls.toMovies, {params: {with_genres: choseGenreId, page: page}});
     }
 
 }

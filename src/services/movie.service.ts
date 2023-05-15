@@ -5,7 +5,7 @@ import {urls} from "../constants";
 
 class MovieService {
 
-    // Method for getting all movies
+    // Method for getting page movies
     getMovies(page: number = 1): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.toMovies, {params: {page}});
     }
