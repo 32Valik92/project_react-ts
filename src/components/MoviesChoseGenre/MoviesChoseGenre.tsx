@@ -3,11 +3,11 @@ import {useSearchParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {genreActions} from "../../redux";
-import {MovieCard} from "../MovieCard/MovieCard";
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
 const MoviesChoseGenre = () => {
     const {moviesChoseGenre: movies} = useAppSelector(state => state.genreReducer);
-    const [query, setQuery] = useSearchParams({page: '1'});
+    const [query,] = useSearchParams({page: '1'});
 
     const dispatch = useAppDispatch();
 
@@ -17,7 +17,7 @@ const MoviesChoseGenre = () => {
 
     return (
         <div>
-            {movies && movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+            {movies && movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
         </div>
     );
 };

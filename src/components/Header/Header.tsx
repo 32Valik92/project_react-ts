@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {NavLink} from "react-router-dom";
 
-import {User} from "../User/User";
+import {User} from "../UserInfo/User";
 
 const Header: FC = () => {
     return (
@@ -11,7 +11,7 @@ const Header: FC = () => {
             </div>
 
             <div>
-                <NavLink to={'about'}>About this project</NavLink>
+                <NavLink to={'movieInfo'}>MovieInfoPage</NavLink>
             </div>
 
             <div>

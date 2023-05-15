@@ -5,7 +5,7 @@ import {IGenre, IMovie, IPagination, IResGenre} from "../interfaces";
 
 class GenreService {
     // Method for getting all genres
-    getAll(): IRes<IResGenre<IGenre[]>> {
+    getGenres(): IRes<IResGenre<IGenre[]>> {
         return axiosService.get(urls.toGenres);
     }
 

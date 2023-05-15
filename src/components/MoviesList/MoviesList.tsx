@@ -3,7 +3,7 @@ import {useSearchParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux";
-import {MovieCard} from "../MovieCard/MovieCard";
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
 const MoviesList: FC = () => {
     const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ const MoviesList: FC = () => {
 
             {/* Show movie page */}
             <div>
-                {moviesList && moviesList.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                {moviesList && moviesList.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
 
             {/* Pagination */}

@@ -2,16 +2,23 @@ import {FC} from 'react';
 import ReactStarRatings from 'react-star-ratings';
 
 import {IMovie} from "../../interfaces";
-import {basePostURL} from "../../constants";
+import {PosterPreview} from "../PosterPreview/PosterPreview";
+import {useNavigate} from "react-router-dom";
 
 interface IProps {
     movie: IMovie;
 }
 
-const MovieCard: FC<IProps> = ({movie}) => {
-    const {title, vote_average, poster_path} = movie;
+const MoviesListCard: FC<IProps> = ({movie}) => {
+    const navigate = useNavigate();
+    const {id, title, vote_average, poster_path} = movie;
+
+    const movieInfo = () => {
+        localStorage.setItem('choseMovieId', `${id}`);
+        navigate('/movieInfo');
+    };
     return (
-        <div>
+        <div onClick={movieInfo}>
 
             {/* Tittle our movie */}
             <div>
@@ -19,9 +26,7 @@ const MovieCard: FC<IProps> = ({movie}) => {
             </div>
 
             {/* Get img for Card */}
-            <div>
-                <img src={`${basePostURL}${poster_path}`} alt={title}/>
-            </div>
+            <PosterPreview key={id} poster_path={poster_path} title={title}/>
 
             {/* star-ratings */}
             <div>
@@ -31,4 +36,4 @@ const MovieCard: FC<IProps> = ({movie}) => {
     );
 };
 
-export {MovieCard};
+export {MoviesListCard};

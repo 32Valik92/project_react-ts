@@ -1,18 +1,20 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IMovie, IPagination} from "../../interfaces";
+import {IChosenMovie, IMovie, IPagination} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
     page: number | null;
     moviesList: IMovie[];
+    chosenMovie: IChosenMovie;
 
 }
 
 const initialState: IState = {
     page: 1,
     moviesList: [],
+    chosenMovie: null
 };
 
 // AsyncThunk for getting all info about pagination page
@@ -20,8 +22,23 @@ const getAllMovies = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
     'movieSlice/getAllMovies',
     async ({page}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getAll(page);
+            const {data} = await movieService.getMovies(page);
             // console.log(data);
+            return data;
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data);
+        }
+    }
+);
+
+// AsyncThunk for getting all information about chosen movie
+const getChoseMovieId = createAsyncThunk<IChosenMovie, { id: number }>(
+    'movieSlice/getChoseMovieId',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getByChoseMovieId(id);
+            console.log(data)
             return data;
         } catch (e) {
             const err = e as AxiosError;
@@ -41,6 +58,9 @@ const slice = createSlice({
                 state.page = page;
                 state.moviesList = results;
             })
+            .addCase(getChoseMovieId.fulfilled, (state, action) => {
+                state.chosenMovie = action.payload;
+            })
     })
 });
 
@@ -48,7 +68,8 @@ const {reducer: movieReducer, actions} = slice;
 
 const movieActions = {
     ...actions,
-    getAllMovies
+    getAllMovies,
+    getChoseMovieId
 }
 
 export {
