@@ -5,9 +5,9 @@ import {IChosenMovie, IMovie, IPagination} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
-    page: number | null;
-    moviesList: IMovie[];
-    chosenMovie: IChosenMovie;
+    page: number | null; // Page with our movies
+    moviesList: IMovie[]; // List of all movies
+    chosenMovie: IChosenMovie; // The movie which we chose
 
 }
 
@@ -38,14 +38,14 @@ const getChoseMovieId = createAsyncThunk<IChosenMovie, { id: number }>(
     async ({id}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getByChoseMovieId(id);
-            console.log(data)
+            // console.log(data)
             return data;
         } catch (e) {
             const err = e as AxiosError;
             return rejectWithValue(err.response.data);
         }
     }
-)
+);
 
 const slice = createSlice({
     name: 'movieSlice',

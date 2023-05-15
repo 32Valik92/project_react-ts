@@ -3,7 +3,7 @@ import {IGenre} from "./genre.interface";
 export interface IChosenMovie {
     adult: boolean;
     backdrop_path: string;
-    belongs_to_collection: {
+    belongs_to_collection?: {
         id: number;
         name: string;
         poster_path: string;

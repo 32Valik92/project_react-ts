@@ -8,10 +8,10 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 const MoviesList: FC = () => {
     const dispatch = useAppDispatch();
     const {moviesList, page} = useAppSelector(state => state.movieReducer);
+
     const [query, setQuery] = useSearchParams({page: '1'});
 
     useEffect(() => {
-        console.log(query.get('page'))
         dispatch(movieActions.getAllMovies({page: +query.get('page')}));
     }, [query, dispatch])
 
@@ -27,7 +27,7 @@ const MoviesList: FC = () => {
                 </button>
             </div>
 
-            {/* Show movie page */}
+            {/* Show movie card */}
             <div>
                 {moviesList && moviesList.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>

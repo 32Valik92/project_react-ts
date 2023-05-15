@@ -14,7 +14,11 @@ const GenresList: FC = () => {
 
     return (
         <div>
-            {genresList && genresList.map(genre => <Genre key={genre.id} genre={genre}/>)}
+
+            {
+                // If we have genres list we cat render each of all genre
+                genresList && genresList.map(genre => <Genre key={genre.id} genre={genre}/>)
+            }
         </div>
     );
 };
