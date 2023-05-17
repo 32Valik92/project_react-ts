@@ -13,8 +13,8 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
     const {title, id, vote_average, poster_path} = movie;
 
-    // Function for get choseMovieId and jump to info page about chosen movie
-    const movieInfo = () => {
+    // Function for set choseMovieId to localStorage and jump to info page about chosen movie
+    const movieInfo = (): void => {
         localStorage.setItem('choseMovieId', `${id}`);
         navigate('/movieInfo');
     };
@@ -30,8 +30,14 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
             {/* Get img for Card */}
             <PosterPreview key={id} poster_path={poster_path} title={title}/>
 
-            {/* star-ratings */}
-            <ReactStarRatings rating={vote_average} starRatedColor='blue' numberOfStars={10} starDimension='30px' starSpacing='5px'/>
+            {/* star-ratings from react-star-ratings */}
+            <ReactStarRatings
+                rating={vote_average}
+                starRatedColor='blue'
+                numberOfStars={10}
+                starDimension='30px'
+                starSpacing='5px'
+            />
 
         </div>
     );

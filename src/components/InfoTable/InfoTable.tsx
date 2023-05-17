@@ -1,5 +1,7 @@
 import {FC} from 'react';
+
 import {IGenre} from "../../interfaces";
+import {Genre} from "../Genre/Genre";
 
 interface IProps {
     genres: IGenre[];
@@ -32,7 +34,13 @@ const InfoTable: FC<IProps> = ({
                 </tr>
                 <tr>
                     <td>genres</td>
-                    <td>{genres.map(genre => <div key={genre.id}>{genre.name}</div>)}</td>
+                    <td>{
+                        genres
+                            ?
+                            genres.map(genre => <Genre key={genre.id} genre={genre}/>)
+                            :
+                            'Not specified'
+                    }</td>
                 </tr>
                 <tr>
                     <td>runtime</td>
@@ -40,7 +48,13 @@ const InfoTable: FC<IProps> = ({
                 </tr>
                 <tr>
                     <td>production_companies</td>
-                    <td>{production_companies.map((company, index) => <div key={index}>{company}</div>)}</td>
+                    <td>{
+                        production_companies
+                            ?
+                            production_companies.map((company, index) => <div key={index}>{company}</div>)
+                            :
+                            'Not specified'
+                    }</td>
                 </tr>
                 <tr>
                     <td>production_countries</td>

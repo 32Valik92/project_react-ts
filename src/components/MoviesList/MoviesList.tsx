@@ -6,11 +6,11 @@ import {movieActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
 const MoviesList: FC = () => {
-    const dispatch = useAppDispatch();
     const {moviesList, page} = useAppSelector(state => state.movieReducer);
-
+    const dispatch = useAppDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
 
+    // Get movies page for showing
     useEffect(() => {
         dispatch(movieActions.getAllMovies({page: +query.get('page')}));
     }, [query, dispatch])
@@ -21,13 +21,23 @@ const MoviesList: FC = () => {
             {/* Pagination */}
             <div>
                 <button disabled={page === 1}
-                        onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') - 1}))}> prev page
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') - 1
+                            }
+                        ))}> prev page
                 </button>
-                <button onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') + 1}))}> next page
+
+                <button disabled={page === 500}
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') + 1
+                            }
+                        ))}> next page
                 </button>
             </div>
 
-            {/* Show movie card */}
+            {/* Show movie cards */}
             <div>
                 {moviesList && moviesList.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
@@ -35,11 +45,22 @@ const MoviesList: FC = () => {
             {/* Pagination */}
             <div>
                 <button disabled={page === 1}
-                        onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') - 1}))}> prev page
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') - 1
+                            }
+                        ))}> prev page
                 </button>
-                <button onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') + 1}))}> next page
+
+                <button disabled={page === 500}
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') + 1
+                            }
+                        ))}> next page
                 </button>
             </div>
+
         </div>
     );
 };

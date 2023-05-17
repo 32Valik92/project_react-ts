@@ -5,18 +5,18 @@ import {genreActions} from "../../redux";
 import {Genre} from "../Genre/Genre";
 
 const GenresList: FC = () => {
-    const dispatch = useAppDispatch();
     const {genresList} = useAppSelector(state => state.genreReducer);
+    const dispatch = useAppDispatch();
 
+    // Get all genres
     useEffect(() => {
         dispatch(genreActions.getAllGenres());
     }, [dispatch])
 
     return (
         <div>
-
             {
-                // If we have genres list we cat render each of all genre
+                // If we have genres list we can render each of all genre
                 genresList && genresList.map(genre => <Genre key={genre.id} genre={genre}/>)
             }
         </div>

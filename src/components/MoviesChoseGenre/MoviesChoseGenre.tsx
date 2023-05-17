@@ -7,11 +7,11 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {GenresList} from "../GenresList/GenresList";
 
 const MoviesChoseGenre = () => {
-    const dispatch = useAppDispatch();
     const {moviesChoseGenre: movies, page} = useAppSelector(state => state.genreReducer);
-
+    const dispatch = useAppDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
 
+    // Get movies page by chosen genre
     useEffect(() => {
         dispatch(genreActions.getAllMoviesByGenre({id: +query.get('choseGenreId'), page: +query.get('page')}));
     }, [dispatch, query])
@@ -24,9 +24,19 @@ const MoviesChoseGenre = () => {
             {/* Pagination */}
             <div>
                 <button disabled={page === 1}
-                        onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') - 1, choseGenreId: +query.get('choseGenreId')}))}> prev page
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') - 1, choseGenreId: +query.get('choseGenreId')
+                            }
+                        ))}> prev page
                 </button>
-                <button onClick={(): void => setQuery(prev => ({...prev, page: +prev.get('page') + 1, choseGenreId: +query.get('choseGenreId')}))}> next page
+
+                <button disabled={page === 500}
+                        onClick={(): void => setQuery(prev => (
+                            {
+                                ...prev, page: +prev.get('page') + 1, choseGenreId: +query.get('choseGenreId')
+                            }
+                        ))}> next page
                 </button>
             </div>
 

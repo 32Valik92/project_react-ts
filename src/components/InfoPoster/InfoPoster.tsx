@@ -18,7 +18,8 @@ const InfoPoster: FC<IProps> = ({chosenMovie}) => {
         runtime,
         vote_average,
         production_companies,
-        production_countries
+        production_countries,
+        overview
     } = chosenMovie;
 
 
@@ -30,15 +31,27 @@ const InfoPoster: FC<IProps> = ({chosenMovie}) => {
         <div className={'InfoPoster'}>
             <div><h1>{title}</h1></div>
             <div>
+                {/* If we have another poster for card we send it, else send default poster */}
                 <PosterPreview
                     poster_path={chosenMovie.belongs_to_collection ? chosenMovie.belongs_to_collection.poster_path : poster}
                     title={title}/>
 
-                <ReactStarRatings rating={vote_average} starRatedColor='blue' numberOfStars={10} starDimension='30px'
-                                  starSpacing='5px'/>
+                {/* Star Ratings from react-star-ratings */}
+                <ReactStarRatings
+                    rating={vote_average}
+                    starRatedColor='blue'
+                    numberOfStars={10}
+                    starDimension='30px'
+                    starSpacing='5px'
+                />
             </div>
+
+            {/* Component where we render all info about chosen movie */}
             <InfoTable genres={genres} release_date={release_date} runtime={runtime} vote_average={vote_average}
                        production_companies={companies} production_countries={countries}/>
+
+            {/* Main info about chosen movie */}
+            <div>{overview}</div>
 
         </div>
     );

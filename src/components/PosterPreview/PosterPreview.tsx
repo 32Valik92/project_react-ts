@@ -1,4 +1,5 @@
 import {FC} from 'react';
+
 import {basePostURL} from "../../constants";
 
 interface IProps {
@@ -7,9 +8,16 @@ interface IProps {
 }
 
 const PosterPreview: FC<IProps> = ({poster_path, title}) => {
+
     return (
         <div>
-            <img src={`${basePostURL}${poster_path}`} alt={title}/>
+            {
+                poster_path
+                    ?
+                    <img src={`${basePostURL}${poster_path}`} alt={title}/>
+                    :
+                    'Sorry poster is not defined'
+            }
         </div>
     );
 };

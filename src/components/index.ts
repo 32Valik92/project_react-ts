@@ -9,4 +9,5 @@ export * from './MoviesList/MoviesList';
 export * from './MoviesListCard/MoviesListCard';
 export * from './PosterPreview/PosterPreview';
 export * from './SearchMovie/SearchMovie';
+export * from './SearchInput/SearchInput';
 export * from './UserInfo/User';
