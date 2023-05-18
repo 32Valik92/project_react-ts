@@ -1,11 +1,13 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import {Outlet} from "react-router-dom";
 
-import {Header} from "../components";
+import {Header, ThemeContext} from "../components";
+import './MainLayout.css';
 
 const MainLayout: FC = () => {
+    const {theme} = useContext(ThemeContext);
     return (
-        <div>
+        <div className={theme}>
             <Header/>
             <Outlet/>
         </div>

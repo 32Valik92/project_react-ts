@@ -5,6 +5,7 @@ import {User} from "../UserInfo/User";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux";
 import {SearchInput} from "../SearchInput/SearchInput";
+import {Switcher} from "../Switcher/Switcher";
 
 const Header: FC = () => {
     const {searchTrigger} = useAppSelector(state => state.movieReducer);
@@ -33,6 +34,8 @@ const Header: FC = () => {
             <div>
                 <SearchInput/>
             </div>
+
+            <Switcher/>
 
             <User/>
 
