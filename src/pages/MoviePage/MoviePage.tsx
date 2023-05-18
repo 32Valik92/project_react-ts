@@ -1,13 +1,14 @@
 import React from 'react';
 
-import {GenresList, MoviesList, SearchMovie} from "../components";
-import {useAppSelector} from "../hooks";
+import {GenresList, MoviesList, SearchMovie} from "../../components";
+import {useAppSelector} from "../../hooks";
+import './MoviePage.css';
 
 const MoviePage = () => {
     const {searchMovies, searchWords} = useAppSelector(state => state.movieReducer);
 
     return (
-        <div>
+        <div className={'main'}>
             <GenresList/>
 
             {

@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {Loading} from "../Loading/Loading";
+import './MoviesList.css';
 
 const MoviesList: FC = () => {
     const {moviesList, page, isLoading, searchWords} = useAppSelector(state => state.movieReducer);
@@ -36,7 +37,7 @@ const MoviesList: FC = () => {
             ?
             <Loading/>
             :
-            <div>
+            <div className={'moviesList'}>
                 {/* Pagination */}
                 <div>
                     <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>

@@ -3,7 +3,7 @@ import ReactSwitch from "react-switch";
 import {FaSun, FaMoon} from 'react-icons/fa';
 
 import {ThemeContext} from "../ThemeContext/ThemeContext";
-import css from '../Header/Header.module.css';
+import '../Header/Header.css';
 
 const Switcher: FC = () => {
     const {theme, toggleTheme} = useContext(ThemeContext);
@@ -23,7 +23,7 @@ const Switcher: FC = () => {
     );
 
     return (
-        <div className={css.switcher}>
+        <div className={'switcher'}>
             <ReactSwitch
                 checked={theme === 'dark'}
                 onChange={toggleTheme}

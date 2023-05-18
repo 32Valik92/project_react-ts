@@ -5,7 +5,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {ISearch} from "../../interfaces";
 import {movieActions} from "../../redux";
-import css from './SearchInput.module.css';
+import './SearchInput.css';
 
 const SearchInput: FC = () => {
     const {searchTrigger} = useAppSelector(state => state.movieReducer);
@@ -27,7 +27,7 @@ const SearchInput: FC = () => {
     }
 
     return (
-        <div className={css.formDiv}>
+        <div className={'formDiv'}>
             <form onSubmit={handleSubmit(search)}>
                 <input type="text" placeholder={'Enter keywords...'} {...register('searchWords')}/>
                 <button>Search</button>

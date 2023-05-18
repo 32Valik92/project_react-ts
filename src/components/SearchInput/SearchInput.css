@@ -33,5 +33,6 @@
 }
 
 .formDiv button:hover {
+    transition: color 0.3s ease-out;
     color: #1b9aaa;
 }
