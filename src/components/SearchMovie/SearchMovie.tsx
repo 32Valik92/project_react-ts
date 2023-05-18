@@ -13,44 +13,42 @@ const SearchMovie: FC = () => {
 
     // Get and set to the movie store our movies by searched words
     useEffect(() => {
-        dispatch(movieActions.searchMoviesByWords({words: searchWords, page: +query.get('page')}))
+        dispatch(movieActions.searchMoviesByWords({words: searchWords, page: +query.get('page')}));
     }, [query, searchWords, dispatch])
 
+    // Function for pagination
+    const paginationFunc = (button: string): void => {
+        if (button === 'next') {
+            setQuery(prev => ({...prev, page: +prev.get('page') + 1}));
+        } else {
+            setQuery(prev => ({...prev, page: +prev.get('page') - 1}));
+        }
+    }
+
     return (
-        <div>
-            {
-                // If we don't have search movies, and we don't click on button to send search words
-                !searchMovies.length && searchTrigger
-                    ?
-                    <div>
-                        Sorry. We can't find these movies
-                    </div>
-                    :
-                    // If we have search words in our store for finding
-                    searchWords.searchWords &&
-                    <div>
-                        {/* Pagination */}
-                        <button disabled={page === 1}
-                                onClick={(): void => setQuery(prev => (
-                                    {
-                                        ...prev, page: +prev.get('page') - 1
-                                    }
-                                    ))}> prev page
-                        </button>
 
-                        <button disabled={page === 500}
-                                onClick={(): void => setQuery(prev => (
-                                    {
-                                        ...prev, page: +prev.get('page') + 1
-                                    }
-                                    ))}> next page
-                        </button>
+        // If we don't have search movies, and we never click on button to send search words
+        !searchMovies.length && searchTrigger
+            ?
+            <div>
+                Sorry. We can't find these movies by "{searchWords.searchWords}"
+            </div>
+            :
+            // If we have search words in our store for finding
+            searchWords.searchWords &&
+            <div>
+                {/* Pagination */}
+                <div>
+                    <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
+                    <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
+                </div>
 
-                        {/* Showing our searched movies */}
-                        {searchMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
-                    </div>
-            }
-        </div>
+
+                <div>
+                    {/* Showing our searched movies */}
+                    {searchMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+                </div>
+            </div>
     );
 };
 

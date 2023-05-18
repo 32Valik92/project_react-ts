@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {IChosenMovie, IMovie, IPagination, ISearch} from "../../interfaces";
@@ -11,6 +11,7 @@ interface IState {
     searchMovies: IMovie[];
     searchTrigger: boolean;
     searchWords: ISearch; // A words which we will use for get movies by this words
+    isLoading: boolean;
 
 }
 
@@ -20,7 +21,8 @@ const initialState: IState = {
     chosenMovie: null,
     searchMovies: [],
     searchTrigger: false,
-    searchWords: {searchWords: ''}
+    searchWords: {searchWords: ''},
+    isLoading: true
 };
 
 // AsyncThunk for getting all info about pagination page
@@ -91,7 +93,7 @@ const slice = createSlice({
     },
     extraReducers: (builder => {
         builder
-            // After getting main movies list
+            // For getting main movies list
             .addCase(getAllMovies.fulfilled, (state, action) => {
                 const {page, results} = action.payload;
                 state.page = page;
@@ -108,6 +110,23 @@ const slice = createSlice({
                 const {results, page} = action.payload;
                 state.searchMovies = results;
                 state.page = page;
+            })
+
+            // For don't see the previous list for a split second
+            .addMatcher(isPending(getAllMovies), state => {
+                state.isLoading = true;
+                state.moviesList = [];
+            })
+
+            // For don't see the previous chosen movie for a split second
+            .addMatcher(isPending(getChoseMovieId, searchMoviesByWords), state => {
+                state.isLoading = true;
+                state.chosenMovie = null;
+            })
+
+            // Finish loading animation
+            .addMatcher(isFulfilled(), state => {
+                state.isLoading = false;
             })
     })
 });

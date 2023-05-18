@@ -17,7 +17,6 @@ class MovieService {
 
     // Method for getting movies by search words
     searchMovies(words: ISearch, page: number): IRes<IPagination<IMovie[]>> {
-        // console.log(words)
         return axiosService.get(urls.searchMovies, {params: {query: words.searchWords, page: page}});
     }
 }

@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {IGenre, IMovie, IPagination, IResGenre} from "../../interfaces";
@@ -8,13 +8,14 @@ interface IState {
     genresList: IGenre[]; // List of all genres
     moviesChoseGenre: IMovie[]; // Array movies of chosen genre
     page: number;
-
+    isLoading: boolean;
 }
 
 const initialState: IState = {
     genresList: [],
     moviesChoseGenre: [],
-    page: 1
+    page: 1,
+    isLoading: true
 };
 
 // AsyncThunk for getting all genres from API
@@ -51,13 +52,27 @@ const slice = createSlice({
     reducers: {},
     extraReducers: (builder => {
         builder
+            // For getting all genres
             .addCase(getAllGenres.fulfilled, (state, action) => {
                 state.genresList = action.payload.genres;
             })
+
+            // For getting main movies list by chosen genre
             .addCase(getAllMoviesByGenre.fulfilled, (state, action) => {
                 const {page, results} = action.payload;
                 state.moviesChoseGenre = results;
                 state.page = page;
+            })
+
+            // For don't see the previous list for a split second
+            .addMatcher(isPending(getAllMoviesByGenre), state => {
+                state.isLoading = true;
+                state.moviesChoseGenre = [];
+            })
+
+            // Finish loading animation
+            .addMatcher(isFulfilled(), state => {
+                state.isLoading = false;
             })
     })
 

@@ -1,6 +1,7 @@
 import {FC} from 'react';
 
 import {basePostURL} from "../../constants";
+import undefined_photo from '../../assets/images/undefined_photo.jpg'
 
 interface IProps {
     poster_path: string;
@@ -16,7 +17,7 @@ const PosterPreview: FC<IProps> = ({poster_path, title}) => {
                     ?
                     <img src={`${basePostURL}${poster_path}`} alt={title}/>
                     :
-                    'Sorry poster is not defined'
+                    <img src={undefined_photo} alt={title}/>
             }
         </div>
     );

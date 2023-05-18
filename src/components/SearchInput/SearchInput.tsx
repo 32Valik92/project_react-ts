@@ -13,14 +13,14 @@ const SearchInput: FC = () => {
     const {register, reset, handleSubmit} = useForm<ISearch>();
 
     // Function for set words from input to store
-    const search:SubmitHandler<ISearch> = (words) => {
-        if (!searchTrigger){
-            // Change trigger after click for showing searched movies
+    const search: SubmitHandler<ISearch> = (words) => {
+        if (!searchTrigger) {
+            // Change trigger after click for showing result
             dispatch(movieActions.changeSearchTrigger());
         }
 
         // Set searched words to store
-        dispatch(movieActions.setSearchWords(words))
+        dispatch(movieActions.setSearchWords(words));
         navigate('movies?page=1'); // Move to main movies page
         reset();
     }

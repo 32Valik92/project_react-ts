@@ -1,9 +1,9 @@
 import {FC} from 'react';
 import ReactStarRatings from 'react-star-ratings';
+import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview/PosterPreview";
-import {useNavigate} from "react-router-dom";
 
 interface IProps {
     movie: IMovie;

@@ -29,7 +29,10 @@ const InfoPoster: FC<IProps> = ({chosenMovie}) => {
 
     return (
         <div className={'InfoPoster'}>
-            <div><h1>{title}</h1></div>
+            <div>
+                <h1>{title}</h1>
+            </div>
+
             <div>
                 {/* If we have another poster for card we send it, else send default poster */}
                 <PosterPreview

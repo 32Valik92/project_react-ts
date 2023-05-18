@@ -35,7 +35,7 @@ const InfoTable: FC<IProps> = ({
                 <tr>
                     <td>genres</td>
                     <td>{
-                        genres
+                        genres.length
                             ?
                             genres.map(genre => <Genre key={genre.id} genre={genre}/>)
                             :
@@ -49,7 +49,7 @@ const InfoTable: FC<IProps> = ({
                 <tr>
                     <td>production_companies</td>
                     <td>{
-                        production_companies
+                        production_companies.length
                             ?
                             production_companies.map((company, index) => <div key={index}>{company}</div>)
                             :
@@ -58,7 +58,13 @@ const InfoTable: FC<IProps> = ({
                 </tr>
                 <tr>
                     <td>production_countries</td>
-                    <td>{production_countries.map((country, index) => <div key={index}>{country}</div>)}</td>
+                    <td>{
+                        production_countries.length
+                            ?
+                            production_countries.map((country, index) => <div key={index}>{country}</div>)
+                            :
+                            'Not specified'
+                    }</td>
                 </tr>
                 </tbody>
             </table>
