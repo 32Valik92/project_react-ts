@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    background-color: #575757;
+
+    min-height: 65px;
+}
+
+.pages {
+    display: flex;
+    justify-content: space-around;
+
+    width: 40%;
+    font-size: 25px;
+}
+
+.pages a {
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+
+    color: #1F1F1F;
+    padding: 15px;
+    width: 50%;
+    font-weight: bold;
+}
+
+.pages a:hover {
+    color: #1b9aaa;
+    background-color: black;
+}
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20%;
+}
+
+.mainFormDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 20%;
+    flex-direction: column;
+}
+
+.userDiv {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    width: 20%;
+}

@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux";
 import {SearchInput} from "../SearchInput/SearchInput";
 import {Switcher} from "../Switcher/Switcher";
+import css from './Header.module.css'
 
 const Header: FC = () => {
     const {searchTrigger} = useAppSelector(state => state.movieReducer);
@@ -22,20 +23,18 @@ const Header: FC = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={css.header}>
+            <div className={css.pages}>
                 <NavLink to={'movies?page=1'} onClick={resetMoviePage}>Movies</NavLink>
-            </div>
 
-            <div>
                 <NavLink to={'movieInfo'}>MovieInfoPage</NavLink>
             </div>
 
-            <div>
+            <Switcher/>
+
+            <div className={css.mainFormDiv}>
                 <SearchInput/>
             </div>
-
-            <Switcher/>
 
             <User/>
 
