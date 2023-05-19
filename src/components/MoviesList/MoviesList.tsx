@@ -38,21 +38,16 @@ const MoviesList: FC = () => {
             <Loading/>
             :
             <div className={'moviesList'}>
-                {/* Pagination */}
-                <div>
-                    <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
-                    <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
-                </div>
 
                 {/* Show movie cards */}
-                <div>
+                <div className={'movieCards'}>
                     {
                         moviesList && moviesList.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                     }
                 </div>
 
                 {/* Pagination */}
-                <div>
+                <div className={'pagination'}>
                     <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
                     <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
                 </div>

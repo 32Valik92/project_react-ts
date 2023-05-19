@@ -6,6 +6,7 @@ import {genreActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {GenresList} from "../GenresList/GenresList";
 import {Loading} from "../Loading/Loading";
+import './MoviesChoseGenre.css'
 
 const MoviesChoseGenre = () => {
     const {moviesChoseGenre: movies, page, isLoading} = useAppSelector(state => state.genreReducer);
@@ -26,7 +27,8 @@ const MoviesChoseGenre = () => {
         }
     }
     return (
-        <div>
+        <div className={'main'}>
+
             {/* Render genres list */}
             <GenresList/>
 
@@ -36,16 +38,17 @@ const MoviesChoseGenre = () => {
                     ?
                     <Loading/>
                     :
-                    <div>
-                        {/* Pagination */}
-                        <div>
-                            <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
-                            <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
-                        </div>
+                    <div className={'moviesListByGenre'}>
 
                         {/* Render all movie card */}
-                        <div>
+                        <div className={'movieCards'}>
                             {movies && movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+                        </div>
+
+                        {/* Pagination */}
+                        <div className={'pagination'}>
+                            <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
+                            <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
                         </div>
                     </div>
             }

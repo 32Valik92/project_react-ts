@@ -1,4 +1,45 @@
 .moviesList {
-    border: gold solid 5px;
-    width: 60%;
+    box-sizing: border-box;
+    padding-top: 20px;
+    /*border: gold solid 5px;*/
+    width: 100%;
 }
+
+/* ------------------ Style for movie cards ------------------ */
+.movieCards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------ */
+
+/* ------------------ Style for pagination ------------------ */
+.pagination {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.pagination button {
+    box-sizing: border-box;
+    width: 200px;
+    height: 55%;
+    padding: 10px 0;
+
+    font-size: 18px;
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ------------------------------------------------------ */
+

@@ -4,6 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {movieActions} from "../../redux";
+import './SearchMovie.css';
 
 
 const SearchMovie: FC = () => {
@@ -30,23 +31,23 @@ const SearchMovie: FC = () => {
         // If we don't have search movies, and we never click on button to send search words
         !searchMovies.length && searchTrigger
             ?
-            <div>
+            <div className={'notFoundMovie'}>
                 Sorry. We can't find these movies by "{searchWords.searchWords}"
             </div>
             :
             // If we have search words in our store for finding
             searchWords.searchWords &&
-            <div>
-                {/* Pagination */}
-                <div>
-                    <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
-                    <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
-                </div>
+            <div className={'moviesList'}>
 
-
-                <div>
+                <div className={'movieCards'}>
                     {/* Showing our searched movies */}
                     {searchMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+                </div>
+
+                {/* Pagination */}
+                <div className={'pagination'}>
+                    <button disabled={page === 1} onClick={(): void => paginationFunc('prev')}> prev page</button>
+                    <button disabled={page === 500} onClick={(): void => paginationFunc('next')}> next page</button>
                 </div>
             </div>
     );

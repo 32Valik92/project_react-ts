@@ -1,7 +1,8 @@
 import {FC} from 'react';
 
 import {basePostURL} from "../../constants";
-import undefined_photo from '../../assets/images/undefined_photo.jpg'
+import undefined_photo from '../../assets/images/undefined_photo.jpg';
+import './PosterPreview.css'
 
 interface IProps {
     poster_path: string;
@@ -11,7 +12,7 @@ interface IProps {
 const PosterPreview: FC<IProps> = ({poster_path, title}) => {
 
     return (
-        <div>
+        <div className={'posterPreview'}>
             {
                 poster_path
                     ?

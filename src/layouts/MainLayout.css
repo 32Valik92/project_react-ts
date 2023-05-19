@@ -10,19 +10,19 @@
     min-height: 100vh;
 }
 
-/* -------------------- Header for light theme -------------------- */
-.light .header {
-    background-color: #A0A0A0;
+/* -------------------- Header for dark theme -------------------- */
+.dark .header {
+    background-color: #575757;
 }
 
-.light .header .pages a {
-    color: #FFFFFF;
+.dark .header .pages a {
+    color: #1F1F1F;
 }
 
-.light .header .pages a:hover {
+.dark .header .pages a:hover {
     transition: background-color 0.5s ease-out;
-    background-color: #FFFFFF;
-    color: #CCCCCC;
+    background-color: black;
+    color: #1b9aaa;
 }
 
 /* ----------------------------------------------------------------- */
@@ -32,9 +32,29 @@
     background-color: #1b9aaa;
 }
 
+.dark .genresList div {
+    color: white;
+}
+
 .dark .genresList div:hover {
     background-color: #105058;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 /* ----------------------------------------------------------------- */
+
+/* -------------------- Movie list for dark theme -------------------- */
+.dark .moviesListCard {
+    background-color: #1b9aaa;
+}
+
+.dark .moviesListCard .title {
+    color: white;
+}
+
+.dark .moviesListCard:hover {
+    border: none; /* Off default border */
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.5); /* Add Box Shadow */
+    cursor: pointer;
+}

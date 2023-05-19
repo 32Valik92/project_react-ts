@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview/PosterPreview";
+import './MoviesListCard.css'
 
 interface IProps {
     movie: IMovie;
@@ -20,10 +21,10 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     };
 
     return (
-        <div onClick={movieInfo}>
+        <div className={'moviesListCard'} onClick={movieInfo}>
 
             {/* Tittle our movie */}
-            <div>
+            <div className={'title'}>
                 {title}
             </div>
 
@@ -31,13 +32,15 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
             <PosterPreview key={id} poster_path={poster_path} title={title}/>
 
             {/* star-ratings from react-star-ratings */}
-            <ReactStarRatings
-                rating={vote_average}
-                starRatedColor='blue'
-                numberOfStars={10}
-                starDimension='30px'
-                starSpacing='5px'
-            />
+            <div className={'starsDiv'}>
+                <ReactStarRatings
+                    rating={vote_average}
+                    starRatedColor='black'
+                    numberOfStars={10}
+                    starDimension='100%'
+                    starSpacing='2px'
+                />
+            </div>
 
         </div>
     );

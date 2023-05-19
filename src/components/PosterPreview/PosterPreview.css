@@ -1,0 +1,8 @@
+.posterPreview {
+    display: flex;
+    justify-content: center;
+}
+
+.posterPreview img {
+    width: 90%;
+}

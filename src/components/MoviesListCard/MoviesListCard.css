@@ -1,0 +1,49 @@
+.moviesListCard {
+    width: 21%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    background-color: white;
+}
+
+.moviesListCard:hover {
+    border: none;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5); /* Add Box Shadow */
+    cursor: pointer;
+}
+
+/* ------------------ Style for movie title ------------------ */
+.moviesListCard .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 3px;
+    height: 50px;
+    font-size: 18px;
+    color: #A0A0A0;
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------ */
+
+/* ------------------ Style for stars ------------------ */
+.moviesListCard .starsDiv {
+    display: flex;
+    justify-content: center;
+
+    padding: 4px;
+}
+
+.moviesListCard .starsDiv .star-ratings .star-container {
+    /* Size from father div */
+    width: 8%;
+}
+
+.moviesListCard .starsDiv .star-ratings {
+    display: flex !important; /* broken father style*/
+    justify-content: center;
+}
+
+/* ------------------------------------------------------ */
