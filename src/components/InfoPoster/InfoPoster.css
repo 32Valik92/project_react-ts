@@ -1,0 +1,44 @@
+.InfoPoster {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.cardAndTable {
+    padding: 0 150px;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+/* ------------------ Style for chosen movie card ------------------ */
+.card {
+    width: 25%;
+    margin: 5px 10px;
+}
+
+.card .starsDiv .star-ratings .star-container {
+    /* Size from father div */
+    width: 8%;
+}
+
+.card .starsDiv .star-ratings {
+    display: flex !important; /* broken father style*/
+    justify-content: center;
+}
+
+/* ------------------------------------------------------ */
+
+/* ------------------ Style for info about movie ------------------ */
+.overview {
+    padding: 50px 80px 0;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+/* ------------------------------------------------------ */

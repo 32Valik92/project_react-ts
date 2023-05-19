@@ -4,6 +4,7 @@ import ReactStarRatings from "react-star-ratings";
 import {IChosenMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import {InfoTable} from "../InfoTable/InfoTable";
+import './InfoPoster.css';
 
 interface IProps {
     chosenMovie: IChosenMovie;
@@ -29,32 +30,38 @@ const InfoPoster: FC<IProps> = ({chosenMovie}) => {
 
     return (
         <div className={'InfoPoster'}>
-            <div>
-                <h1>{title}</h1>
+
+            <div className={'title'}>
+                <h2>{title}</h2>
             </div>
 
-            <div>
-                {/* If we have another poster for card we send it, else send default poster */}
-                <PosterPreview
-                    poster_path={chosenMovie.belongs_to_collection ? chosenMovie.belongs_to_collection.poster_path : poster}
-                    title={title}/>
+            <div className={'cardAndTable'}>
+                <div className={'card'}>
+                    {/* If we have another poster for card we send it, else send default poster */}
+                    <PosterPreview
+                        poster_path={chosenMovie.belongs_to_collection ? chosenMovie.belongs_to_collection.poster_path : poster}
+                        title={title}/>
 
-                {/* Star Ratings from react-star-ratings */}
-                <ReactStarRatings
-                    rating={vote_average}
-                    starRatedColor='blue'
-                    numberOfStars={10}
-                    starDimension='30px'
-                    starSpacing='5px'
-                />
+                    {/* Star Ratings from react-star-ratings */}
+                    <div className={'starsDiv'}>
+                        <ReactStarRatings
+                            rating={vote_average}
+                            starRatedColor='black'
+                            numberOfStars={10}
+                            starDimension='100%'
+                            starSpacing='2px'
+                        />
+                    </div>
+                </div>
+
+                {/* Component where we render all info about chosen movie */}
+                <InfoTable genres={genres} release_date={release_date} runtime={runtime} vote_average={vote_average}
+                           production_companies={companies} production_countries={countries}/>
             </div>
 
-            {/* Component where we render all info about chosen movie */}
-            <InfoTable genres={genres} release_date={release_date} runtime={runtime} vote_average={vote_average}
-                       production_companies={companies} production_countries={countries}/>
 
             {/* Main info about chosen movie */}
-            <div>{overview}</div>
+            <div className={'overview'}>{overview}</div>
 
         </div>
     );

@@ -11,7 +11,8 @@ const SearchInput: FC = () => {
     const {searchTrigger} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const {register, reset, handleSubmit} = useForm<ISearch>();
+    // "watch" for checking for empty input
+    const {register, reset, handleSubmit, watch} = useForm<ISearch>();
 
     // Function for set words from input to store
     const search: SubmitHandler<ISearch> = (words) => {
@@ -30,7 +31,7 @@ const SearchInput: FC = () => {
         <div className={'formDiv'}>
             <form onSubmit={handleSubmit(search)}>
                 <input type="text" placeholder={'Enter keywords...'} {...register('searchWords')}/>
-                <button>Search</button>
+                <button disabled={!watch('searchWords')}>Search</button>
             </form>
         </div>
     );

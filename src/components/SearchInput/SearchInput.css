@@ -36,3 +36,8 @@
     transition: color 0.3s ease-out;
     color: #1b9aaa;
 }
+
+.formDiv button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

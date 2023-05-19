@@ -1,0 +1,63 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
+
+/* ------------------ Style for div with movie genre ------------------ */
+.genresDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px 0;
+}
+
+h3 {
+    margin: 0 0 10px 0;
+    color: #1F1F1F;
+}
+
+.genres {
+    display: flex;
+    justify-content: center;
+}
+
+.genres div {
+    margin: 0 5px;
+    background-color: #CCCCCC;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #1F1F1F;
+}
+
+.genres div:hover {
+    background-color: #A0A0A0;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------ */
+
+/* ------------------ Style for table with movie info ------------------ */
+table {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    color: #1F1F1F;
+}
+
+tr {
+    padding-bottom: 50px;
+}
+
+td {
+    padding: 10px 10px 10px 5px;
+}
+
+ol {
+    margin: 0;
+    padding: 0 19px;
+}
+
+/* ------------------------------------------------------ */

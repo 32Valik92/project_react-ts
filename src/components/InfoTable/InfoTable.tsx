@@ -2,6 +2,7 @@ import {FC} from 'react';
 
 import {IGenre} from "../../interfaces";
 import {Genre} from "../Genre/Genre";
+import './InfoTable.css';
 
 interface IProps {
     genres: IGenre[];
@@ -21,43 +22,44 @@ const InfoTable: FC<IProps> = ({
                                    vote_average
                                }) => {
     return (
-        <div>
+        <div className={'table'}>
+
+            <div className={'genresDiv'}>
+                <h3>Genres</h3>
+
+                <div className={'genres'}>
+                    {genres.map(genre => <Genre key={genre.id} genre={genre}/>)}
+                </div>
+            </div>
+
             <table>
                 <tbody>
                 <tr>
-                    <td>release_date</td>
+                    <td>Release date</td>
                     <td>{release_date}</td>
                 </tr>
                 <tr>
-                    <td>vote_average</td>
+                    <td>Vote average</td>
                     <td>{vote_average}</td>
                 </tr>
                 <tr>
-                    <td>genres</td>
-                    <td>{
-                        genres.length
-                            ?
-                            genres.map(genre => <Genre key={genre.id} genre={genre}/>)
-                            :
-                            'Not specified'
-                    }</td>
-                </tr>
-                <tr>
-                    <td>runtime</td>
+                    <td>Runtime</td>
                     <td>{runtime}</td>
                 </tr>
                 <tr>
-                    <td>production_companies</td>
+                    <td>Production companies</td>
                     <td>{
                         production_companies.length
                             ?
-                            production_companies.map((company, index) => <div key={index}>{company}</div>)
+                            <ol className={'companies'}>
+                                {production_companies.map((company, index) => <li key={index}>{company}</li>)}
+                            </ol>
                             :
                             'Not specified'
                     }</td>
                 </tr>
                 <tr>
-                    <td>production_countries</td>
+                    <td>Production countries</td>
                     <td>{
                         production_countries.length
                             ?
