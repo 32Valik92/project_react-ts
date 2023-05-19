@@ -31,13 +31,17 @@ const SearchMovie: FC = () => {
         // If we don't have search movies, and we never click on button to send search words
         !searchMovies.length && searchTrigger
             ?
-            <div className={'notFoundMovie'}>
-                Sorry. We can't find these movies by "{searchWords.searchWords}"
+            <div className={'resultFoundMovie'}>
+                Sorry. We can't find these movies by keyword "{searchWords.searchWords}"
             </div>
             :
             // If we have search words in our store for finding
             searchWords.searchWords &&
             <div className={'moviesList'}>
+
+                <div className={'resultFoundMovie'}>
+                    We found these movies by keyword "{searchWords.searchWords}"
+                </div>
 
                 <div className={'movieCards'}>
                     {/* Showing our searched movies */}

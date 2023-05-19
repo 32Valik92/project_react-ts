@@ -58,3 +58,9 @@
     box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.5); /* Add Box Shadow */
     cursor: pointer;
 }
+
+.dark .resultFoundMovie {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* ----------------------------------------------------------------- */
