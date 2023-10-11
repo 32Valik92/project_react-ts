@@ -8,3 +8,27 @@
 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+
+/* ------------------------- @media ------------------------- */
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .resultFoundMovie {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+
+    .resultFoundMovie {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+
+    .resultFoundMovie {
+        text-align: center;
+    }
+}

@@ -20,3 +20,48 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+
+/* ------------------------- @media ------------------------- */
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+
+    .genresList {
+        width: 80%;
+        margin: 30px;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .genresList div {
+        color: #CCCCCC;
+        font-weight: bold;
+        margin: 5px;
+        padding: 2px 4px;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+
+    .genresList {
+        width: 80%;
+        margin: 30px;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .genresList div {
+        color: #CCCCCC;
+        font-weight: bold;
+        margin: 5px;
+        padding: 2px 4px;
+    }
+}

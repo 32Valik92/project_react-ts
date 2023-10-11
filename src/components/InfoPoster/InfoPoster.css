@@ -18,13 +18,13 @@
 
 /* ------------------ Style for chosen movie card ------------------ */
 .card {
-    width: 25%;
+    width: 250px;
     margin: 5px 10px;
 }
 
-.card .starsDiv .star-ratings .star-container {
+.starsDiv .star-ratings .star-container {
     /* Size from father div */
-    width: 8%;
+    /*width: 8%;*/
 }
 
 .card .starsDiv .star-ratings {
@@ -42,3 +42,33 @@
 }
 
 /* ------------------------------------------------------ */
+
+
+/* ------------------------- @media ------------------------- */
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .cardAndTable {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+
+    .cardAndTable {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+
+    .cardAndTable {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 50px;
+    }
+
+    .overview {
+        font-size: 20px;
+    }
+}

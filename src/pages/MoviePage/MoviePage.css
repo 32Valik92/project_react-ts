@@ -6,5 +6,31 @@
 
 .searchOrMainMovie {
     box-sizing: border-box;
-    width: 75%;
+    width: 1300px;
+}
+
+/* ------------------------- @media ------------------------- */
+
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchOrMainMovie {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchOrMainMovie {
+        width: 100%;
+    }
 }
